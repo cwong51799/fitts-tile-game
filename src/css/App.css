@@ -49,6 +49,9 @@ td {
   display: flex;
 }
 
+.centerWithinMe {
+  text-align: center;
+}
 
 .board {
   background-color: whitesmoke;

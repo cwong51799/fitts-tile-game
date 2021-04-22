@@ -1,5 +1,9 @@
 import * as ActionTypes from './ActionTypes'
 import ClickEntry from './ClickEntry'
+
+const timeIncrement = 10
+const clicksBeforeIncrement = 10
+
 /* Initial State */
 const initState = {
   score : 0,
@@ -14,7 +18,9 @@ const initState = {
 
   clickEntries : [],
 
-  highlightedTiles : []
+  highlightedTiles : [],
+
+  time : timeIncrement,
 }
 
 const pickANewTile = (X, highlightedTiles) => {
@@ -29,10 +35,26 @@ const pickANewTile = (X, highlightedTiles) => {
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
     case ActionTypes.INCREMENT_SCORE:
-      return {
-        ...state,
-        score : state.score + 1
+      if (state.score === 0) {
+        return {
+          ...state,
+          score : state.score + 1,
+          clickEntries : []
+        }
       }
+      else if ((state.score + 1) % clicksBeforeIncrement === 0) {
+        return {
+          ...state,
+          score : state.score + 1,
+          time : state.time + timeIncrement,
+        }
+      } else {
+        return {
+          ...state,
+          score : state.score + 1,
+        }
+      }
+
     case ActionTypes.PICK_A_NEW_HIGHLIGHT:
       var newHighlights = [...state.highlightedTiles.slice(0, state.highlightedTiles.indexOf(action.Exception)),
         ...state.highlightedTiles.slice(state.highlightedTiles.indexOf(action.Exception)+1)]
@@ -68,10 +90,16 @@ const rootReducer = (state = initState, action) => {
           prevY : action.Y,
         }
       }
+    case ActionTypes.SET_TIME:
+      return {
+        ...state,
+        time : action.Time
+      }
     case ActionTypes.RESET_GAME:
       return {
         ...initState,
-        highlightedTiles : [pickANewTile(-1, state.highlightedTiles), pickANewTile(-1, state.highlightedTiles), pickANewTile(-1, state.highlightedTiles)]
+        clickEntries : state.clickEntries,
+        highlightedTiles : [pickANewTile(-1, state.highlightedTiles)]
       }
     default:
       return state;

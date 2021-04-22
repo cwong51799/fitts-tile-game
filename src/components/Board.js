@@ -49,6 +49,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 const mapStateToProps = (state, ownProps) => {
+    return {
+        
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

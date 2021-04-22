@@ -9,3 +9,5 @@ export const PICK_THREE_RANDOM_TILES = "PICK_THREE_RANDOM_TILES"
 export const UPDATE_PREV_X_Y_COORD = "UPDATE_PREV_X_Y_COORD"
 
 export const RESET_GAME = "RESET_GAME"
+
+export const SET_TIME = "SET_TIME"

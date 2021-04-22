@@ -28,6 +28,13 @@ export const updatePrevXYCoord = (x, y) => {
     }
 }
 
+export const setTime = (time) => {
+    return {
+        type : ActionTypes.SET_TIME,
+        Time : time,
+    }
+}
+
 export const resetGame = () => {
     return {
         type : ActionTypes.RESET_GAME

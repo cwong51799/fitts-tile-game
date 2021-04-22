@@ -20,7 +20,7 @@ class FittsDisplay extends Component {
                 {Object.keys(this.props.entries).map((key) => {
                     let entry = this.props.entries[key];
                     return(
-                        <tr>
+                        <tr key={key}>
                             <td>
                                 {entry.distance}
                             </td>
