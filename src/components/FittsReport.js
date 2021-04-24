@@ -16,19 +16,33 @@ class FittsReport extends Component {
     }
 
     render() {
-        return (
-            <div className="centerWithinMe">
-                <h3>Fitts Report</h3>
-                <StatChart/>
-                <div>
-                <h5>Average Index of Performance (Throughput)</h5>
-                <p>{this.props.avgIP}</p>
+        if (this.props.totalClickEntries.length === 0) {
+            return (
+                <div className="centerWithinMe">            
+                    <h3>There are no entries to display stats for!</h3>
+                    <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
                 </div>
-                <h5>Input Entries (size: {this.props.totalClickEntries.length})</h5>
-                <div><FittsDisplay fullDisplay={true}/></div>
-                <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
-            </div>
-        );
+            )
+
+        } else {
+            return (
+                <div className="centerWithinMe">
+                    <h3>Fitts Report</h3>
+                    <StatChart/>
+                    <div>
+                    <h5>Current Regression Model</h5>
+                    <p>{this.props.RegressionModel == null ? "N/A" : this.props.RegressionModel.toString()}</p>
+                    <h5>Average Index of Performance (Throughput)</h5>
+                    <p>{this.props.avgIP}</p>
+                    </div>
+                    <h5>Input Entries (size: {this.props.totalClickEntries.length})</h5>
+                    <div><FittsDisplay fullDisplay={true}/></div>
+                    <h5>Score</h5>
+                    <p>{this.props.score}</p>
+                    <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
+                </div>
+            );
+        }
     }
 }
 
@@ -51,7 +65,9 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state, ownProps) => {
     return {
         totalClickEntries : state.totalClickEntries,
-        avgIP : state.AvgIP
+        avgIP : state.AvgIP,
+        RegressionModel : state.RegressionModel,
+        score : state.score,
     }
 }
 

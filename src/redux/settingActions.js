@@ -67,3 +67,10 @@ export const setAvgIndexOfPerformance = (avg) => {
         Avg : avg
     }
 }
+
+export const setNumHighlights = (num) => {
+    return {
+        type : ActionTypes.SET_NUM_HIGHLIGHTS,
+        Num : num
+    }
+}

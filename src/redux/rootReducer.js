@@ -1,9 +1,9 @@
 import * as ActionTypes from './ActionTypes'
 import ClickEntry from '../classes/ClickEntry'
 
-const timeIncrement = 10
+const timeIncrement = 30
 const clicksBeforeIncrement = 10
-
+const numTiles = 40
 
 /* Initial State */
 const initState = {
@@ -29,15 +29,17 @@ const initState = {
 
   RegressionModel : null,
 
+  NumHighlights : 1,
+
   ChartData : [],
 
   GameOver : false,
 }
 
 const pickANewTile = (X, highlightedTiles) => {
-  var randomNumber = Math.floor(Math.random() * 16) + 1
+  var randomNumber = Math.floor(Math.random() * numTiles) + 1
   while (randomNumber === X || highlightedTiles.includes(randomNumber)) {
-    randomNumber = Math.floor(Math.random() * 16) + 1
+    randomNumber = Math.floor(Math.random() * numTiles) + 1
   }
   return randomNumber
 }
@@ -118,11 +120,15 @@ const rootReducer = (state = initState, action) => {
         totalClickEntries : [...state.totalClickEntries, ...state.currentClickEntries]
       }
     case ActionTypes.RESET_GAME:
-      /* Preserve the regression model */
+      var newHighlightedTiles = [];
+      for (var i=0;i<state.NumHighlights;i++) {
+        newHighlightedTiles.push(pickANewTile(-1, state.highlightedTiles))
+      }
       return {
         ...initState,
-        highlightedTiles : [pickANewTile(-1, state.highlightedTiles)],
+        highlightedTiles : newHighlightedTiles,
         totalClickEntries : state.totalClickEntries,
+          /* Preserve the regression model */
         RegressionModel : state.RegressionModel,
 
       }
@@ -135,6 +141,11 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         ChartData : action.Data
+      }
+    case ActionTypes.SET_NUM_HIGHLIGHTS:
+      return {
+        ...state,
+        NumHighlights : action.Num
       }
     default:
       return state;

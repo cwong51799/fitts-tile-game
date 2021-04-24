@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Board from './Board'
 import Scoreboard from './Scoreboard'
-import FittsDisplay from './FittsDisplay'
 import FittsReport from './FittsReport'
 import { connect } from 'react-redux'
 

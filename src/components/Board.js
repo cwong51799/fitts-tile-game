@@ -9,33 +9,70 @@ class Board extends Component {
         this.props.resetGame()
     }
 
+
+
+
     render() {
+        var i = 1;
         return (
             <div className="board">
                 <Row>
-                <Col><Tile id={1}/></Col>
-                <Col><Tile id={2}/></Col>
-                <Col><Tile id={3}/></Col>
-                <Col><Tile id={4}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                 </Row>
                 <Row>
-                <Col><Tile id={5}/></Col>
-                <Col><Tile id={6}/></Col>
-                <Col><Tile id={7}/></Col>
-                <Col><Tile id={8}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                 </Row>
                 <Row>
-                <Col><Tile id={9}/></Col>
-                <Col><Tile id={10}/></Col>
-                <Col><Tile id={11}/></Col>
-                <Col><Tile id={12}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                 </Row>
                 <Row>
-                <Col><Tile id={13}/></Col>
-                <Col><Tile id={14}/></Col>
-                <Col><Tile id={15}/></Col>
-                <Col><Tile id={16}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                 </Row>
+               
             </div>
         )
     }
@@ -45,12 +82,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         resetGame : () => {
             dispatch(resetGame())
-        }
+        },
     }
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        
+        board : state.Board
     }
 }
 
