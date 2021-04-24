@@ -29,18 +29,6 @@ class Board extends Component {
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
-                </Row>
-                <Row>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
-                    <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                 </Row>
@@ -57,8 +45,28 @@ class Board extends Component {
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                 </Row>
                 <Row>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
+                </Row>
+                <Row>
+                    <Col><Tile id={i++}/></Col>
+                    <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
                     <Col><Tile id={i++}/></Col>
