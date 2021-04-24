@@ -27,17 +27,17 @@ class FittsReport extends Component {
         } else {
             return (
                 <div className="centerWithinMe">
-                    <h3>Fitts Report</h3>
+                    <h3>Session Report</h3>
                     <StatChart/>
                     <div>
-                    <h5>Current Regression Model</h5>
+                    <h5 className="stylish-heading">Current Regression Model</h5>
                     <p>{this.props.RegressionModel == null ? "N/A" : this.props.RegressionModel.toString()}</p>
-                    <h5>Average Index of Performance (Throughput)</h5>
-                    <p>{this.props.avgIP}</p>
+                    <h5 className="stylish-heading">Average Index of Performance (Throughput)</h5>
+                    <p>{this.props.avgIP} bits/second</p>
                     </div>
-                    <h5>Input Entries (size: {this.props.totalClickEntries.length})</h5>
+                    <h5 className="stylish-heading">Input Entries (size: {this.props.totalClickEntries.length})</h5>
                     <div><FittsDisplay fullDisplay={true}/></div>
-                    <h5>Score</h5>
+                    <h5 className="stylish-heading">Score</h5>
                     <p>{this.props.score}</p>
                     <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
                 </div>

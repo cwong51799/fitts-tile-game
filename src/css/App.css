@@ -63,6 +63,13 @@ td {
   background-color: whitesmoke;
 }
 
+.stylish-heading {
+  border: 5px solid peachpuff;
+  padding: 3px;
+  background-color: whitesmoke;
+  color: black;
+}
+
 .tile {
   width: 100px;
   height: 100px;
