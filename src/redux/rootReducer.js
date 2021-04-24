@@ -1,8 +1,9 @@
 import * as ActionTypes from './ActionTypes'
-import ClickEntry from './ClickEntry'
+import ClickEntry from '../classes/ClickEntry'
 
 const timeIncrement = 10
 const clicksBeforeIncrement = 10
+
 
 /* Initial State */
 const initState = {
@@ -16,11 +17,21 @@ const initState = {
 
   fittsScore : 0,
 
-  clickEntries : [],
+  totalClickEntries : [],
+
+  currentClickEntries : [],
 
   highlightedTiles : [],
 
+  AvgIP : 0,
+
   time : timeIncrement,
+
+  RegressionModel : null,
+
+  ChartData : [],
+
+  GameOver : false,
 }
 
 const pickANewTile = (X, highlightedTiles) => {
@@ -39,7 +50,7 @@ const rootReducer = (state = initState, action) => {
         return {
           ...state,
           score : state.score + 1,
-          clickEntries : []
+          currentClickEntries : []
         }
       }
       else if ((state.score + 1) % clicksBeforeIncrement === 0) {
@@ -78,7 +89,7 @@ const rootReducer = (state = initState, action) => {
         return {
           ...state,
           prevTimeStamp : currentTime,
-          clickEntries : [...state.clickEntries, new ClickEntry(distance, timeDiff)],
+          currentClickEntries : [...state.currentClickEntries, new ClickEntry(distance, timeDiff)],
           prevX : action.X,
           prevY : action.Y,
         }
@@ -90,16 +101,40 @@ const rootReducer = (state = initState, action) => {
           prevY : action.Y,
         }
       }
+    case ActionTypes.SET_AVERAGE_INDEX_OF_PERFORMANCE:
+      return {
+        ...state,
+        AvgIP : action.Avg
+      }
     case ActionTypes.SET_TIME:
       return {
         ...state,
         time : action.Time
       }
+    case ActionTypes.END_GAME:
+      return {
+        ...state,
+        GameOver : true,
+        totalClickEntries : [...state.totalClickEntries, ...state.currentClickEntries]
+      }
     case ActionTypes.RESET_GAME:
+      /* Preserve the regression model */
       return {
         ...initState,
-        clickEntries : state.clickEntries,
-        highlightedTiles : [pickANewTile(-1, state.highlightedTiles)]
+        highlightedTiles : [pickANewTile(-1, state.highlightedTiles)],
+        totalClickEntries : state.totalClickEntries,
+        RegressionModel : state.RegressionModel,
+
+      }
+    case ActionTypes.SET_REGRESSION_MODEL:
+      return {
+        ...state,
+        RegressionModel : action.Model
+      }
+    case ActionTypes.SET_CHART_DATA:
+      return {
+        ...state,
+        ChartData : action.Data
       }
     default:
       return state;

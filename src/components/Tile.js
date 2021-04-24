@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { pickANewHighlight, incrementScore, updatePrevXYCoord, resetGame } from '../redux/settingActions'
+import { pickANewHighlight, incrementScore, updatePrevXYCoord, endGame } from '../redux/settingActions'
 
 class Tile extends Component {
     isHighlighted() {
@@ -13,7 +13,7 @@ class Tile extends Component {
             this.props.updatePrevXYCoord(e.clientX, e.clientY)
             this.props.pickANewHighlight(this.props.id)
         } else {
-            this.props.resetGame()
+            this.props.endGame()
         }
     }
 
@@ -36,8 +36,8 @@ const mapDispatchToProps = (dispatch) => {
         updatePrevXYCoord : (x,y) => {
             dispatch(updatePrevXYCoord(x,y))
         },
-        resetGame : () => {
-            dispatch(resetGame())
+        endGame : () => {
+            dispatch(endGame())
         }
     }
 }

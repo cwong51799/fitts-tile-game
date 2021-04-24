@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { resetGame, setTime } from '../redux/settingActions'
+import { endGame, setTime } from '../redux/settingActions'
 
 class Scoreboard extends Component {
     countdown = () => {
         if (this.props.time === 1) {
-            this.props.resetGame()
+            this.props.endGame()
         }
         if (this.props.score > 0) {
             this.props.setTime(this.props.time-1)
@@ -13,7 +13,11 @@ class Scoreboard extends Component {
     }
 
     componentDidMount() {
-        setInterval(this.countdown, 1000)
+        this.clicker = setInterval(this.countdown, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.clicker)
     }
 
     render() {
@@ -41,8 +45,8 @@ const mapDispatchToProps = (dispatch) => {
         setTime : (time) => {
             dispatch(setTime(time))
         },
-        resetGame : () => {
-            dispatch(resetGame())
+        endGame : () => {
+            dispatch(endGame())
         }
     }
 }

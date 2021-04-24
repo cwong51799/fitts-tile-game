@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class FittsDisplay extends Component {
     render() {
         return (
-            <Table className="fitts-table">
+            <Table className={this.props.fullDisplay ? "scrollable" : ""}>
             <thead>
                 <tr>
                 <th data-field="distance">
@@ -17,8 +17,8 @@ class FittsDisplay extends Component {
                 </tr>
             </thead>
             <tbody>
-                {Object.keys(this.props.entries).map((key) => {
-                    let entry = this.props.entries[key];
+                {Object.keys(this.props.fullDisplay ? this.props.totalClickEntries : this.props.currentClickEntries).map((key) => {
+                    let entry = this.props.fullDisplay ? this.props.totalClickEntries[key] : this.props.currentClickEntries[key];
                     return(
                         <tr key={key}>
                             <td>
@@ -38,7 +38,8 @@ class FittsDisplay extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        entries : state.clickEntries
+        currentClickEntries : state.currentClickEntries,
+        totalClickEntries : state.totalClickEntries,
     }
 }
 

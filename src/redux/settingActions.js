@@ -35,8 +35,35 @@ export const setTime = (time) => {
     }
 }
 
+export const endGame = () => {
+    return {
+        type : ActionTypes.END_GAME,
+    }
+}
+
 export const resetGame = () => {
     return {
         type : ActionTypes.RESET_GAME
+    }
+}
+
+export const setRegressionModel = (model) => {
+    return {
+        type : ActionTypes.SET_REGRESSION_MODEL,
+        Model : model
+    }
+}
+
+export const setChartData = (data) => {
+    return {
+        type : ActionTypes.SET_CHART_DATA,
+        Data : data,
+    }
+}
+
+export const setAvgIndexOfPerformance = (avg) => {
+    return {
+        type : ActionTypes.SET_AVERAGE_INDEX_OF_PERFORMANCE,
+        Avg : avg
     }
 }
