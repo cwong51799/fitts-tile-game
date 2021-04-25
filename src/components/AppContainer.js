@@ -4,6 +4,8 @@ import Board from './Board'
 import Scoreboard from './Scoreboard'
 import FittsReport from './FittsReport'
 import { connect } from 'react-redux'
+import { Switch } from 'react-materialize'
+import { toggleBorders } from '../redux/settingActions'
 
 
 class AppContainer extends Component {
@@ -18,6 +20,13 @@ class AppContainer extends Component {
             <div className="full-container"> 
                  <div className="primary-container">
                     <Header/>
+                    <Switch
+                        id="Switch-11"
+                        offLabel="Borders Off"
+                        onChange={(e) => this.props.toggleBorders(e.target.checked)}
+                        onLabel="Borders On"
+                        checked={this.props.Borders}
+                    />
                     <Board/>
                     <Scoreboard/>
                  </div>
@@ -30,12 +39,15 @@ class AppContainer extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        toggleBorders : (bool) => {
+            dispatch(toggleBorders(bool))
+        }
     }
 }
 const mapStateToProps = (state, ownProps) => {
     return {
         GameOver : state.GameOver,
+        Borders : state.Borders,
     }
 }
 

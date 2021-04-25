@@ -9,9 +9,6 @@ class Board extends Component {
         this.props.resetGame()
     }
 
-
-
-
     render() {
         var i = 1;
         return (

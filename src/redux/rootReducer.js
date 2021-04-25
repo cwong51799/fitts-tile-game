@@ -1,7 +1,8 @@
 import * as ActionTypes from './ActionTypes'
 import ClickEntry from '../classes/ClickEntry'
+import PremadeEntries from '../data/PremadeEntries.json'
 
-const timeIncrement = 30
+const timeIncrement = 10
 const clicksBeforeIncrement = 10
 const numTiles = 40
 
@@ -34,6 +35,8 @@ const initState = {
   ChartData : [],
 
   GameOver : false,
+
+  Borders : true,
 }
 
 const pickANewTile = (X, highlightedTiles) => {
@@ -146,6 +149,20 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         NumHighlights : action.Num
+      }
+    case ActionTypes.LOAD_IN_PREMADE_ENTRIES:
+      var newEntries = []
+      for (var j=0; j<PremadeEntries.entries.length;j++) {
+        newEntries.push(new ClickEntry(PremadeEntries.entries[j].distance, PremadeEntries.entries[j].time))
+      }
+      return {
+        ...state,
+        totalClickEntries : [...newEntries, ...state.totalClickEntries]
+      }
+    case ActionTypes.TOGGLE_BORDERS:
+      return {
+        ...state,
+        Borders : action.Status,
       }
     default:
       return state;

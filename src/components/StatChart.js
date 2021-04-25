@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 
 class StatChart extends Component {
     render() {
+        console.log("STAT CHART RENDERED")
         return (
             <Chart
-              width={'600px'}
+              width={'1100px'}
               height={'400px'}
               chartType="ComboChart"
               loader={<div>Loading Chart</div>}
@@ -31,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        entries : state.totalClickEntries,
         ChartData : state.ChartData
     }
 }

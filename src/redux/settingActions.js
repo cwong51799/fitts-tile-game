@@ -74,3 +74,16 @@ export const setNumHighlights = (num) => {
         Num : num
     }
 }
+
+export const toggleBorders = (bool) => {
+    return {
+        type : ActionTypes.TOGGLE_BORDERS,
+        Status : bool
+    }
+}
+
+export const loadInPremadeEntries = () => {
+    return {
+        type : ActionTypes.LOAD_IN_PREMADE_ENTRIES
+    }
+}

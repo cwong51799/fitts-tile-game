@@ -3,7 +3,7 @@ import SimpleLinearRegression from 'ml-regression-simple-linear'
 const widthOfTarget = 100;
 
 /* Sometimes ID can be negative, count these as 0 */
-function getIndexOfDifficulty(clickEntry) {
+export function getIndexOfDifficulty(clickEntry) {
     var id = Math.log((2*clickEntry.distance)/widthOfTarget).toFixed(4)
     if (id < 0) {
         id = 0;

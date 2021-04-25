@@ -36,7 +36,7 @@ class Tile extends Component {
 
     render() {
         return (
-            <div className="tile" 
+            <div className="tile"
             id={"tile_"+this.props.id}
             ref={el=> {
                 if (this.isHighlighted()) {
@@ -49,7 +49,7 @@ class Tile extends Component {
                     }
                 }
             }}
-            style={{backgroundColor : this.isHighlighted() ? "black" : "white"}} 
+            style={{backgroundColor : this.isHighlighted() ? "black" : "white", border : this.props.Borders ? ".5px solid gray" : ""}} 
             onClick={(e) => this._handleClick(e)}>
 
             </div>
@@ -80,6 +80,7 @@ const mapStateToProps = (state, ownProps) => {
         RegressionModel : state.RegressionModel,
         prevX : state.prevX,
         prevY : state.prevY,
+        Borders : state.Borders
     }
 }
 

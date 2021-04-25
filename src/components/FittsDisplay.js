@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'react-materialize'
 import { connect } from 'react-redux'
+import * as MathUtilities from '../math/MathUtilities'
 
 class FittsDisplay extends Component {
     render() {
@@ -14,11 +15,18 @@ class FittsDisplay extends Component {
                 <th data-field="movement-time">
                     Movement Time(ms)
                 </th>
+                <th data-field="predicted-time">
+                    Predicted Time(ms)
+                </th>
+                <th data-field="difference">
+                    Difference (ms)
+                </th>
                 </tr>
             </thead>
             <tbody>
                 {Object.keys(this.props.fullDisplay ? this.props.totalClickEntries : this.props.currentClickEntries).map((key) => {
-                    let entry = this.props.fullDisplay ? this.props.totalClickEntries[key] : this.props.currentClickEntries[key];
+                    var entry = this.props.fullDisplay ? this.props.totalClickEntries[key] : this.props.currentClickEntries[key];
+                    var predictedTime = this.props.regressionModel != null ? this.props.regressionModel.predict(parseFloat(MathUtilities.getIndexOfDifficulty(entry))).toFixed(0) : null
                     return(
                         <tr key={key}>
                             <td>
@@ -26,6 +34,12 @@ class FittsDisplay extends Component {
                             </td>
                             <td>
                                 {entry.time}
+                            </td>
+                            <td>
+                                {predictedTime == null ? "N/A" : predictedTime}
+                            </td>
+                            <td>
+                                {predictedTime == null ? "N/A" : entry.time - predictedTime}
                             </td>
                         </tr>
                     )
@@ -40,6 +54,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         currentClickEntries : state.currentClickEntries,
         totalClickEntries : state.totalClickEntries,
+        regressionModel : state.RegressionModel
     }
 }
 

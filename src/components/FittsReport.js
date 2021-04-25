@@ -1,26 +1,57 @@
 import React, { Component } from 'react';
 import { Button } from 'react-materialize';
-import { resetGame, setAvgIndexOfPerformance, setChartData, setRegressionModel } from '../redux/settingActions'
+import { loadInPremadeEntries, resetGame, setAvgIndexOfPerformance, setChartData, setRegressionModel } from '../redux/settingActions'
 import { connect } from 'react-redux'
 import FittsDisplay from './FittsDisplay';
 import * as MathUtilities from '../math/MathUtilities'
-
 import StatChart from './StatChart';
 
 
 class FittsReport extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            needsRefresh : false,
+        }
+    }
+
     componentDidMount() {
+        this.updateData()
+    }
+
+    demandRefresh() {
+        this.setState({
+            needsRefresh : true,
+        })
+    }
+
+    signalRefreshed() {
+        this.setState({
+            needsRefresh : false,
+        })
+    }
+
+    updateData() {
         this.props.setRegressionModel(MathUtilities.calculateLinearRegression(this.props.totalClickEntries))
         this.props.setChartData(MathUtilities.getChartReadyData(this.props.totalClickEntries))
         this.props.setAvgIndexOfPerformance(MathUtilities.getAverageIndexOfPerformance(this.props.totalClickEntries))
     }
+    
 
     render() {
+        // For saving entries 
+        //console.log(JSON.stringify(this.props.totalClickEntries))
+        if (this.state.needsRefresh) {
+            this.updateData();
+            this.signalRefreshed()
+        }
         if (this.props.totalClickEntries.length === 0) {
             return (
                 <div className="centerWithinMe">            
                     <h3>There are no entries to display stats for!</h3>
-                    <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
+                    <Button onClick={(e)=> {
+                        this.props.resetGame()
+                    }}>Try again</Button>
                 </div>
             )
 
@@ -37,6 +68,10 @@ class FittsReport extends Component {
                     </div>
                     <h5 className="stylish-heading">Input Entries (size: {this.props.totalClickEntries.length})</h5>
                     <div><FittsDisplay fullDisplay={true}/></div>
+                    <Button onClick={(e)=> {
+                        this.props.loadInPremadeEntries()
+                        this.demandRefresh()
+                    }}>Load Premade Data</Button>
                     <h5 className="stylish-heading">Score</h5>
                     <p>{this.props.score}</p>
                     <Button onClick={(e)=>this.props.resetGame()}>Try again</Button>
@@ -59,6 +94,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setAvgIndexOfPerformance : (avg) => {
             dispatch(setAvgIndexOfPerformance(avg))
+        },
+        loadInPremadeEntries : () => {
+            dispatch(loadInPremadeEntries())
         }
     }
 }
