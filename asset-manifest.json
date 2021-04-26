@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fitts-tile-game/static/css/main.39bdb956.chunk.css",
+    "main.js": "/fitts-tile-game/static/js/main.28b87157.chunk.js",
+    "main.js.map": "/fitts-tile-game/static/js/main.28b87157.chunk.js.map",
+    "runtime-main.js": "/fitts-tile-game/static/js/runtime-main.20b1182f.js",
+    "runtime-main.js.map": "/fitts-tile-game/static/js/runtime-main.20b1182f.js.map",
+    "static/js/2.5200ab73.chunk.js": "/fitts-tile-game/static/js/2.5200ab73.chunk.js",
+    "static/js/2.5200ab73.chunk.js.map": "/fitts-tile-game/static/js/2.5200ab73.chunk.js.map",
+    "static/js/3.3c5422dd.chunk.js": "/fitts-tile-game/static/js/3.3c5422dd.chunk.js",
+    "static/js/3.3c5422dd.chunk.js.map": "/fitts-tile-game/static/js/3.3c5422dd.chunk.js.map",
+    "index.html": "/fitts-tile-game/index.html",
+    "static/css/main.39bdb956.chunk.css.map": "/fitts-tile-game/static/css/main.39bdb956.chunk.css.map",
+    "static/js/2.5200ab73.chunk.js.LICENSE.txt": "/fitts-tile-game/static/js/2.5200ab73.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20b1182f.js",
+    "static/js/2.5200ab73.chunk.js",
+    "static/css/main.39bdb956.chunk.css",
+    "static/js/main.28b87157.chunk.js"
+  ]
+}
