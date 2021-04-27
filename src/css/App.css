@@ -43,7 +43,7 @@ td {
   margin-left: 100px;
   margin-top: 50px;
   max-height: 500px;
-  min-width: 600px;
+  min-width: 300px;
   max-width: 600px;
   overflow-y: scroll;
   display: flex;
@@ -57,6 +57,7 @@ td {
 
 .centerWithinMe {
   text-align: center;
+  align-items: center;
 }
 
 .board {
@@ -96,4 +97,10 @@ td {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.desc {
+  max-width: 1100px;
+  font-size: 14px;
 }

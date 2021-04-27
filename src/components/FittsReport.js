@@ -59,6 +59,13 @@ class FittsReport extends Component {
             return (
                 <div className="centerWithinMe">
                     <h3>Session Report</h3>
+                    <h5 className="stylish-heading centerWithinMe">Application of Fitts' Law</h5>
+                    <p className="desc">According to Fitts' Law, the time it takes to move your cursor from one tile to another is a function of the distance between them.
+                    Using the distance and the fixed width of the tiles, we can calculate the ID (Index of Difficulty, ID=log(2D/W)) between each pair of tiles. We can use 
+                    linear regression to build a model to predict the time needed to click a destination tile. Your subsequent rounds will have the current model's prediction. 
+                    Play more rounds to feed the model so it can make more accurate predictions!
+                    </p>
+                    <h5 className="stylish-heading">Performance Graph</h5>
                     <StatChart/>
                     <div>
                     <h5 className="stylish-heading">Current Regression Model</h5>
