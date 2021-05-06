@@ -13,7 +13,7 @@ class StatChart extends Component {
               loader={<div>Loading Chart</div>}
               data={this.props.ChartData}
               options={{
-                title: 'Fitts Actual vs. Expected Value',
+                title: "Fitts's Actual vs. Expected Value",
                 hAxis: { title: 'Index of Difficulty'},
                 vAxis: { title: 'Movement Time'},
                 legend: '',
